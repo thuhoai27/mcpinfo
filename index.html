@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MCP 도구 목록</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e74c3c;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.95em;
+        }
+        th {
+            background-color: #e74c3c;
+            color: white;
+            font-weight: bold;
+            text-align: left;
+            padding: 12px;
+            border: 1px solid #ddd;
+        }
+        td {
+            padding: 12px;
+            border: 1px solid #ddd;
+            vertical-align: top;
+        }
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        tr:hover {
+            background-color: #fde3e3;
+        }
+        .server-column {
+            width: 10%;
+            text-align: center;
+        }
+        .tool-column {
+            width: 18%;
+            font-weight: bold;
+            color: #c0392b;
+        }
+        .description-column {
+            width: 72%;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 0.8em;
+            color: #7f8c8d;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>MCP 도구 목록</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th class="server-column">서버</th>
+                    <th class="tool-column">도구</th>
+                    <th class="description-column">설명</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">create_directory</td>
+                    <td class="description-column">새 디렉토리를 생성하거나 디렉토리가 존재하는지 확인합니다. 한 번의 작업으로 여러 중첩 디렉토리를 생성할 수 있습니다. 디렉토리가 이미 존재하면 이 작업은 조용히 성공합니다. 프로젝트 디렉토리 구조를 설정하거나 필요한 경로가 존재하는지 확인하는 데 완벽합니다. 허용된 디렉토리 내에서만 작동합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">directory_tree</td>
+                    <td class="description-column">파일과 디렉토리의 재귀적 트리 뷰를 JSON 구조로 가져옵니다. 각 항목에는 '이름', '유형'(파일/디렉토리), 디렉토리를 위한 '하위항목'이 포함됩니다. 파일에는 하위항목 배열이 없으며, 디렉토리는 항상 하위항목 배열(비어 있을 수 있음)을 가집니다. 출력은 가독성을 위해 2칸 들여쓰기로 형식이 지정됩니다. 허용된 디렉토리 내에서만 작동합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">edit_file</td>
+                    <td class="description-column">텍스트 파일에 줄 기반 편집을 수행합니다. 각 편집은 정확한 줄 시퀀스를 새 내용으로 대체합니다. 변경 사항을 보여주는 git 스타일 diff를 반환합니다. 허용된 디렉토리 내에서만 작동합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">get_file_info</td>
+                    <td class="description-column">파일이나 디렉토리에 대한 상세 메타데이터를 검색합니다. 크기, 생성 시간, 최종 수정 시간, 권한, 유형 등의 포괄적인 정보를 반환합니다. 이 도구는 실제 내용을 읽지 않고 파일 특성을 이해하는 데 완벽합니다. 허용된 디렉토리 내에서만 작동합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">list_allowed_directories</td>
+                    <td class="description-column">이 서버가 액세스할 수 있는 디렉토리 목록을 반환합니다. 파일에 액세스하기 전에 어떤 디렉토리를 사용할 수 있는지 이해하기 위해 사용합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">list_directory</td>
+                    <td class="description-column">지정된 경로의 모든 파일과 디렉토리의 상세 목록을 가져옵니다. 결과는 [FILE]과 [DIR] 접두사로 파일과 디렉토리를 명확하게 구분합니다. 이 도구는 디렉토리 구조를 이해하고 디렉토리 내의 특정 파일을 찾는 데 필수적입니다. 허용된 디렉토리 내에서만 작동합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">move_file</td>
+                    <td class="description-column">파일과 디렉토리를 이동하거나 이름을 변경합니다. 한 번의 작업으로 파일을 디렉토리 간에 이동하고 이름을 변경할 수 있습니다. 대상이 존재하면 작업이 실패합니다. 다른 디렉토리 간에도 작동하며 동일한 디렉토리 내에서 간단한 이름 변경에도 사용할 수 있습니다. 소스와 대상 모두 허용된 디렉토리 내에 있어야 합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">read_file</td>
+                    <td class="description-column">파일 시스템에서 파일의 전체 내용을 읽습니다. 다양한 텍스트 인코딩을 처리하며 파일을 읽을 수 없는 경우 자세한 오류 메시지를 제공합니다. 단일 파일의 내용을 검사해야 할 때 이 도구를 사용하세요. 허용된 디렉토리 내에서만 작동합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">read_multiple_files</td>
+                    <td class="description-column">여러 파일의 내용을 동시에 읽습니다. 여러 파일을 분석하거나 비교해야 할 때 파일을 하나씩 읽는 것보다 더 효율적입니다. 각 파일의 내용은 참조를 위한 경로와 함께 반환됩니다. 개별 파일에 대한 읽기 실패가 전체 작업을 중지하지 않습니다. 허용된 디렉토리 내에서만 작동합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">search_files</td>
+                    <td class="description-column">패턴과 일치하는 파일과 디렉토리를 재귀적으로 검색합니다. 시작 경로에서 모든 하위 디렉토리를 검색합니다. 검색은 대소문자를 구분하지 않으며 부분 이름과 일치합니다. 일치하는 모든 항목에 대한 전체 경로를 반환합니다. 정확한 위치를 모를 때 파일을 찾는 데 유용합니다. 허용된 디렉토리 내에서만 검색합니다.</td>
+                </tr>
+                <tr>
+                    <td class="server-column">filesystem</td>
+                    <td class="tool-column">write_file</td>
+                    <td class="description-column">새 파일을 생성하거나 기존 파일을 새 내용으로 완전히 덮어씁니다. 경고 없이 기존 파일을 덮어쓰므로 주의해서 사용하세요. 적절한 인코딩으로 텍스트 내용을 처리합니다. 허용된 디렉토리 내에서만 작동합니다.</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="footer">
+            <p>© 2025 MCP 도구 문서 - 생성일: 2025년 4월 4일</p>
+        </div>
+    </div>
+</body>
+</html>
